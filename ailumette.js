@@ -1,0 +1,350 @@
+const readline = require('readline');
+const process = require('process'); 
+const { randomInt } = require('crypto');
+const { Console } = require('console');
+const { exec } = require('child_process');
+
+
+
+
+
+if(process.argv[2] == "--gui"){
+
+    exec('npm start', (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
+}else{
+
+
+
+
+function affichetableau(plateau){
+    //console.log(plateau.length)
+    let i = 0; 
+    console.log("*********")
+    while (i<plateau.length){
+        let y = 0;
+
+        process.stdout.write("*");   
+        while (y<plateau[i].length){
+            
+            process.stdout.write(plateau[i][y]);
+            
+            y++
+        }
+        process.stdout.write("*");  
+    
+        console.log("\n")
+        i++
+    }
+    console.log("*********")
+}
+
+
+function tabconstruct(){
+    
+    let plateau = [
+        [" "," "," ","|"," "," "," "],
+        [" "," ","|","|","|"," "," "],
+        [" ","|","|","|","|","|"," "],
+        ["|","|","|","|","|","|","|"]
+    ];
+
+    
+
+
+    
+    return plateau
+
+}
+/*
+function numberLine(plateau){
+
+    let i = 0;
+    let count = 0;
+    
+    while (i<plateau.length){
+        
+        let y = 0;
+        console.log(plateau[i].length)
+        
+        let fin = false
+        while(y<plateau[i].length || fin == false){
+            console.log("y : "+y+" i : "+i) 
+            console.log("dedans : "+plateau[i][y]) 
+            if(plateau[i][y] == "|"){
+                count++
+                
+                if(i<3){
+                    i++
+                }
+
+                if(i==1){
+                    fin = true
+                }
+                
+                
+            }
+            y++
+        }
+
+        i++
+
+    }
+
+
+    console.log("count : "+count)
+    if(count == 1){
+         i = 0;
+
+         index =0;
+
+         while(i<plateau.length){
+
+            
+            if(plateau[i][y] == "|"){
+
+                
+                index = i;
+
+            }
+            y++
+
+         }
+
+         return index
+    }else{
+        return false
+    }
+    
+}
+*/
+
+
+
+function touriA(plateau){
+    //console.log(" TEST : "+numberLine(plateau))
+   
+    let i = 0
+    let lineiA = randomInt(1,4)
+    let numiA = randomInt(1,7)
+    let ok = false;
+    
+   
+    let save2 = 0;
+    while (ok == false){
+
+         save2 = numiA;
+
+        if(numberOnLine(plateau[lineiA])>=numiA){
+
+            
+
+            while(i<numiA){
+
+               
+
+                if(plateau[lineiA][i] == "|" ){
+                    
+                    plateau[lineiA][i] = " ";
+    
+                }else{
+                    numiA++
+                }
+                i++
+            }
+            
+
+            
+            
+         ok = true             
+        }else{
+             lineiA = randomInt(1,4)
+             numiA = randomInt(1,7)
+        }
+
+        
+
+    }
+
+ 
+    console.log("AI removed "+save2+" match(es) from line "+(lineiA+1))
+    affichetableau(plateau)
+    
+    
+
+ 
+
+
+    if(endgame(plateau)){
+
+        console.log("I lost.. snif.. but I’ll get you next time!!");
+        
+
+        }else{
+            console.log("Your turn : ")
+        }
+         
+        
+
+
+    
+}
+
+
+
+function numberOnLine(line){
+    let i = 0;
+
+    let count = 0;
+
+  
+
+    while (i<line.length){
+        if(line[i] == "|"){
+            count++
+        }
+        i++
+    }
+    //console.log("nombre sur la ligne :"+count)
+    return count
+}
+
+
+
+function endgame(plateau){
+    let i = 0;
+
+    let count = 0;
+
+  
+
+    while (i<plateau.length){
+        
+        let y = 0;
+
+        while (y<plateau[i].length){
+
+            if(plateau[i][y] == "|"){
+                count++
+            }
+            y++
+
+        }
+        
+        i++
+    }
+    
+    //console.log("nombre sur le plateau :"+count)
+    
+    if(count > 0){
+        return false
+    }
+    return true 
+}
+
+
+
+
+function tour(plateau,line,num){
+    index = line
+    line = line-1
+
+    
+
+    if(!Number.isInteger(index) || parseInt(index,10)<1 || parseInt(index,10)>4 ){
+        console.log("veuillez indiquer une ligne cohérente et le nombre d'allumette svp")
+        return 
+    }
+
+    if(!num){
+        console.log("veuillez indiquer un nombre d'allumette")
+        return
+    }
+
+    let i = 0;
+    
+    if(numberOnLine(plateau[line])>=num){
+
+        let save = num
+
+        while(i<num){
+
+            if(plateau[line][i] == "|" ){
+                
+                plateau[line][i] = " ";
+
+            }else{
+                num++
+            }
+            i++
+        }
+        
+        
+        console.log("Your turn :")
+        console.log("Line: "+(line+1))
+        console.log("Match(es): "+save)
+        console.log("Player removed "+save+" match(es) from line "+(line+1))
+
+        affichetableau(plateau)
+        
+        console.log("IA turn... ")
+
+      
+
+        if(!endgame(plateau)){
+
+        touriA(plateau)
+
+        }else{
+            console.log("You lost, too bad..");
+            process.exit();
+        }
+
+
+    }else{
+        console.log("pas assez d'allumette sur la ligne")  
+    }
+   
+
+   
+
+    
+
+
+
+}
+
+
+
+
+let gplateau = tabconstruct()
+affichetableau(gplateau)
+
+
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+    console.log("choisissez une line et un nombre d'allumettes à retirer")
+
+    rl.on('line', (request) =>[
+        
+        tour(gplateau,parseInt(request[0], 10),parseInt(request[1], 10))
+    
+    ])
+
+
+
+}
+
