@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    $("#retry").hide();
    
     let plateau = [
         [" "," "," ","|"," "," "," "],
@@ -10,13 +10,16 @@ $(document).ready(function(){
 
   
 
-
    
 
     $("#valide").on("click",  function(){
         let line = parseInt($("#line").val());
         let num = parseInt($("#num").val());
         tour(plateau,line,num)
+    })
+
+    $("#retry").on("click",  function(){
+        document.location.reload();
     })
 
 
@@ -72,6 +75,7 @@ $(document).ready(function(){
     
 
     function tour(plateau,line,num){
+        $("#info").empty();
         
         index = line
         line = line-1
@@ -117,6 +121,7 @@ $(document).ready(function(){
         }else{
             console.log("vous avez perdu");
             $("#result").append("Vous avez perdu")
+            $("#retry").show();
            
         }
 
@@ -186,6 +191,7 @@ function touriA(plateau){
     if(endgame(plateau)){
 
         $("#result").append("Vous avez gagner")
+        $("#retry").show();
         
         }
          
