@@ -27,7 +27,7 @@ if(process.argv[2] == "--gui"){
 
 
 function affichetableau(plateau){
-    //console.log(plateau.length)
+    
     let i = 0; 
     console.log("*********")
     while (i<plateau.length){
