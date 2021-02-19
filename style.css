@@ -1,0 +1,19 @@
+body{
+    text-align: center;
+}
+
+#jeu{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    width: 400px;
+    margin: auto;
+    
+    
+}
+
+
+.case{
+    border: 1px solid black;
+    height: 100px;
+    
+}
