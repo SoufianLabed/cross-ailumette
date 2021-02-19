@@ -158,8 +158,9 @@ function touriA(plateau){
     //console.log(" TEST : "+numberLine(plateau))
    
     let i = 0
+    
     let lineiA = Math.floor(Math.random() * 3) + 1;
-    let numiA = Math.floor(Math.random() * 6) + 1;
+    let numiA = Math.floor(Math.random() * 7) + 1;
 
     
     
@@ -195,7 +196,7 @@ function touriA(plateau){
              
 
              lineiA = Math.floor(Math.random() * 3) + 1;
-             numiA = Math.floor(Math.random() * 6) + 1;
+             numiA = Math.floor(Math.random() * 7) + 1;
         }
 
         

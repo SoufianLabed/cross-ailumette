@@ -134,8 +134,8 @@ function touriA(plateau){
     //console.log(" TEST : "+numberLine(plateau))
    
     let i = 0
-    let lineiA = randomInt(1,4)
-    let numiA = randomInt(1,7)
+    let lineiA = Math.floor(Math.random() * 3) + 1;
+    let numiA = Math.floor(Math.random() * 7) + 1;
     let ok = false;
     
    
@@ -167,8 +167,8 @@ function touriA(plateau){
             
          ok = true             
         }else{
-             lineiA = randomInt(1,4)
-             numiA = randomInt(1,7)
+             lineiA = Math.floor(Math.random() * 3) + 1;
+             numiA = Math.floor(Math.random() * 7) + 1;
         }
 
         
