@@ -65,73 +65,11 @@ function tabconstruct(){
     return plateau
 
 }
-/*
-function numberLine(plateau){
-
-    let i = 0;
-    let count = 0;
-    
-    while (i<plateau.length){
-        
-        let y = 0;
-        console.log(plateau[i].length)
-        
-        let fin = false
-        while(y<plateau[i].length || fin == false){
-            console.log("y : "+y+" i : "+i) 
-            console.log("dedans : "+plateau[i][y]) 
-            if(plateau[i][y] == "|"){
-                count++
-                
-                if(i<3){
-                    i++
-                }
-
-                if(i==1){
-                    fin = true
-                }
-                
-                
-            }
-            y++
-        }
-
-        i++
-
-    }
-
-
-    console.log("count : "+count)
-    if(count == 1){
-         i = 0;
-
-         index =0;
-
-         while(i<plateau.length){
-
-            
-            if(plateau[i][y] == "|"){
-
-                
-                index = i;
-
-            }
-            y++
-
-         }
-
-         return index
-    }else{
-        return false
-    }
-    
-}
-*/
 
 
 
 function touriA(plateau){
-    //console.log(" TEST : "+numberLine(plateau))
+  
    
     let i = 0
     let lineiA = Math.floor(Math.random() * 3) + 1;
@@ -214,7 +152,7 @@ function numberOnLine(line){
         }
         i++
     }
-    //console.log("nombre sur la ligne :"+count)
+    
     return count
 }
 
@@ -243,8 +181,7 @@ function endgame(plateau){
         i++
     }
     
-    //console.log("nombre sur le plateau :"+count)
-    
+
     if(count > 0){
         return false
     }

@@ -18,24 +18,13 @@ $(document).ready(function(){
         let num = parseInt($("#num").val());
         tour(plateau,line,num)
     })
-/*
-    $("#valide").on("click",  function(){
-        
-        lineiA = Math.floor(Math.random() * 3) + 1;
-        numiA = Math.floor(Math.random() * 6) + 1;
 
-        console.log(lineiA);
-        console.log(numiA)
-        
-    })*/
 
     function numberOnLine(line){
         let i = 0;
     
         let count = 0;
 
-        //console.log("La ligne recu : "+line)
-    
       
     
         while (i<line.length){
@@ -44,7 +33,7 @@ $(document).ready(function(){
             }
             i++
         }
-        //console.log("nombre sur la ligne :"+count)
+      
         return count
     }
     
@@ -73,8 +62,7 @@ $(document).ready(function(){
             
             i++
         }
-        
-        //console.log("nombre sur le plateau :"+count)
+       
         
         if(count > 0){
             return false
@@ -91,14 +79,15 @@ $(document).ready(function(){
     
 
     if(!Number.isInteger(index) || parseInt(index,10)<1 || parseInt(index,10)>4 ){
+        $("#info").empty();
         $("#info").append("veuillez indiquer une ligne cohérente et le nombre d'allumette svp")
         console.log("veuillez indiquer une ligne cohérente et le nombre d'allumette svp")
         return 
     }
 
-    if(!num){
+    if(!num || !index){
+        $("#info").empty();
         $("#info").append("veuillez indiquer un nombre d'allumette")
-        //console.log("veuillez indiquer un nombre d'allumette")
         return
     }
 
@@ -117,20 +106,9 @@ $(document).ready(function(){
             }
             i++
         }
-        console.log("Tableau après votre coup")
+        
         afficheplateau(plateau)
         
-
-        
-        if(endgame(plateau)){
-            
-           
-
-            //console.log("le joueur "+joueur+" a gagné")
-            
-        }
-
-        //joueur++
 
         if(!endgame(plateau)){
 
@@ -155,7 +133,7 @@ $(document).ready(function(){
 
     
 function touriA(plateau){
-    //console.log(" TEST : "+numberLine(plateau))
+    
    
     let i = 0
     
@@ -231,14 +209,14 @@ function touriA(plateau){
         while (i<plateau.length){
             
             let y = 0;
-            //console.log(i)
+        
             while(y<plateau[i].length){
              
                 if(plateau[i][y] == "|"){
                     count++
                    
-                    $(`div:eq(${(7*i+y)})`).css("background-color","#aaff00");
-                    //console.log(i+1*y)
+                    $(`div:eq(${(7*i+y)})`).css("background-color","#ff5e78");
+                    
 
                 }else{
                     $(`div:eq(${(7*i+y)})`).css("background-color","white");
