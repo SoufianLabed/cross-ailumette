@@ -198,12 +198,12 @@ function tour(plateau,line,num){
     
 
     if(!Number.isInteger(index) || parseInt(index,10)<1 || parseInt(index,10)>4 ){
-        console.log("veuillez indiquer une ligne cohérente et le nombre d'allumette svp")
+        console.log("please indicate a good line and the number of matches please")
         return 
     }
 
     if(!num){
-        console.log("veuillez indiquer un nombre d'allumette")
+        console.log("please indicate a number of matches please")
         return
     }
 
@@ -248,7 +248,7 @@ function tour(plateau,line,num){
 
 
     }else{
-        console.log("pas assez d'allumette sur la ligne")  
+        console.log("not enough match")  
     }
    
 
@@ -273,7 +273,7 @@ const rl = readline.createInterface({
     output: process.stdout
   });
 
-    console.log("choisissez une line et un nombre d'allumettes à retirer")
+    console.log("choose a line and a number of matches to remove")
 
     rl.on('line', (request) =>[
         

@@ -84,14 +84,14 @@ $(document).ready(function(){
 
     if(!Number.isInteger(index) || parseInt(index,10)<1 || parseInt(index,10)>4 ){
         $("#info").empty();
-        $("#info").append("veuillez indiquer une ligne cohérente et le nombre d'allumette svp")
-        console.log("veuillez indiquer une ligne cohérente et le nombre d'allumette svp")
+        $("#info").append("please indicate a good line and the number of matches please")
+        
         return 
     }
 
     if(!num || !index){
         $("#info").empty();
-        $("#info").append("veuillez indiquer un nombre d'allumette")
+        $("#info").append("please indicate a number of matches please")
         return
     }
 
@@ -119,15 +119,16 @@ $(document).ready(function(){
         touriA(plateau)
 
         }else{
-            console.log("vous avez perdu");
-            $("#result").append("Vous avez perdu")
+            console.log("You lose");
+            $("#result").append("You lose")
             $("#retry").show();
            
         }
 
 
     }else{
-        console.log("pas assez d'allumette sur la ligne")  
+        $("#info").empty();
+        $("#info").append("there is not enough match on the line")
     }
 
 
@@ -148,9 +149,6 @@ function touriA(plateau){
     
     
 
-    console.log("la ligne envoyé : "+plateau[lineiA])
-   
-   
     let ok = false;
     
    
@@ -172,7 +170,7 @@ function touriA(plateau){
                 }
                 i++
             }
-            console.log("TABLEAU APRES COUP DE L'IA")
+           
             
          ok = true             
         }else{
@@ -190,7 +188,7 @@ function touriA(plateau){
 
     if(endgame(plateau)){
 
-        $("#result").append("Vous avez gagner")
+        $("#result").append("You win")
         $("#retry").show();
         
         }
