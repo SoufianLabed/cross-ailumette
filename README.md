@@ -1,6 +1,6 @@
 # cross-ailumette
 
-#Hi welcome to my cross-ailumette project :D 
+Hi welcome to my cross-ailumette project :D 
 
 To lauch cross-ailumette, don't forget to install the modules with "npm i".
 
