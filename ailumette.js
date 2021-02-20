@@ -197,10 +197,21 @@ function tour(plateau,line,num){
 
     
 
-    if(!Number.isInteger(index) || parseInt(index,10)<1 || parseInt(index,10)>4 ){
-        console.log("please indicate a good line and the number of matches please")
+    if(parseInt(index,10)<1 || parseInt(index,10)>4 ){
+        console.log("Error: this line is out of range")
         return 
     }
+
+    if(!Number.isInteger(index) || !Number.isInteger(num)){
+        console.log("invalid input (positive number expected)")
+        return 
+    }
+
+    if(num < 1){
+        console.log("Error: you have to remove at least one match")
+        return 
+    }
+
 
     if(!num){
         console.log("please indicate a number of matches please")
