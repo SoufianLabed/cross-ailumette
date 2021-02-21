@@ -57,10 +57,6 @@ function tabconstruct(){
         [" ","|","|","|","|","|"," "],
         ["|","|","|","|","|","|","|"]
     ];
-
-    
-
-
     
     return plateau
 
@@ -85,7 +81,6 @@ function touriA(plateau){
         if(numberOnLine(plateau[lineiA])>=numiA){
 
             
-
             while(i<numiA){
 
                
@@ -119,9 +114,6 @@ function touriA(plateau){
     
     
 
- 
-
-
     if(endgame(plateau)){
 
         console.log("I lost.. snif.. but I’ll get you next time!!");
@@ -131,9 +123,6 @@ function touriA(plateau){
             console.log("Your turn : ")
         }
          
-        
-
-
     
 }
 
